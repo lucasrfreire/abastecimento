@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: node_modules/.bin/nodemon --exec npm start
+    environment:
+      - APP_ENV=dev
+    volumes:
+      - ./:/frontend:rw
+    ports:
+      - "3000:3000"
