@@ -7,9 +7,9 @@ module.exports = function(app){
         var veiculo = req.body;
 
         var connection = app.config.dbConnection();
-        var veiculoModel = new app.app.models.veiculoModel;
+        var veiculoModel = new app.app.models.veiculoModel(connection);
 
-        veiculoModel.salvarVeiculo(veiculo, connection, function(error, result){
+        veiculoModel.salvarVeiculo(veiculo, function(error, result){
             res.render('/veiculos');
         });
     });
