@@ -1,15 +1,19 @@
+function Lancamentos(){
+
+}
+
+Lancamentos.prototype.getLancamentos = function(connection, callback){
+    connection.query('', callback);
+}
+
+Lancamentos.prototype.getLancamento = function(connection, callback){
+    connection.query('', callback);
+}
+
+Lancamentos.prototype.salvarLancamento = function(lancamento, connection, callback){
+    connection.query('', callback);
+}
+
 module.exports = function(){
-    this.getLancamentos = function(connection, callback){
-        connection.query('', callback);
-    }
-
-    this.getLancamento = function(connection, callback){
-        connection.query('', callback);
-    }
-
-    this.salvarLancamento = function(lancamento, connection, callback){
-        connection.query('', callback);
-    }
-
-    return this;
+    return Lancamentos;
 }

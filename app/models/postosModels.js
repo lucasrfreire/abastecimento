@@ -1,14 +1,19 @@
+function Postos(){
+
+}
+
+Postos.prototype.getPostos = function(connection, callback){
+    connection.query('', callback);
+}
+
+Postos.prototype.getPosto = function(connection, callback){
+    connection.query('', callback);
+}
+
+Postos.prototype.salvarPosto = function(posto, connection, callback){
+    connection.query('',callback);
+}
+
 module.exports = function(){
-
-    this.getPostos = function(connection, callback){
-        connection.query('', callback);
-    }
-    this.getPosto = function(connection, callback){
-        connection.query('', callback);
-    }
-    this.salvarPosto = function(posto, connection, callback){
-        connection.query('',callback);
-    }
-
-    return this;
+    return Postos;
 }
