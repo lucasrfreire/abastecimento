@@ -2,18 +2,18 @@ function LancamentosDAO(connection){
     this._connection = connection;
 }
 
-Lancamentos.prototype.getLancamentos = function(callback){
+LancamentosDAO.prototype.getLancamentos = function(callback){
     this._connection.query('', callback);
 }
 
-Lancamentos.prototype.getLancamento = function(callback){
+LancamentosDAO.prototype.getLancamento = function(callback){
     this._connection.query('', callback);
 }
 
-Lancamentos.prototype.salvarLancamento = function(lancamento, callback){
+LancamentosDAO.prototype.salvarLancamento = function(lancamento, callback){
     this._connection.query('', callback);
 }
 
 module.exports = function(){
-    return Lancamentos;
+    return LancamentosDAO;
 }
