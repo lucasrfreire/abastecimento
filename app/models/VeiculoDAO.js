@@ -1,4 +1,4 @@
-function Veiculo(connetion){
+function VeiculoDAO(connetion){
     this._connection = connetion;
 }
 

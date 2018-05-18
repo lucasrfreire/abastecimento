@@ -1,4 +1,4 @@
-function Postos(connection){
+function PostosDAO(connModelection){
     this._connection = connection;
 }
 
@@ -16,4 +16,4 @@ Postos.prototype.salvarPosto = function(posto, callback){
 
 module.exports = function(){
     return Postos;
-}
+}Model

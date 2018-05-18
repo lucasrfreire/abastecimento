@@ -1,4 +1,4 @@
-function Noticias(connection){
+function NoticiasDAO(connection){
     this._connection = connection;
 }
 

@@ -1,4 +1,4 @@
-function Motorista(connection){
+function MotoristaDAO(connection){
     this._connection = connection;
 }
 

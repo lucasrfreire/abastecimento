@@ -1,4 +1,4 @@
-function Lancamentos(connection){
+function LancamentosDAO(connection){
     this._connection = connection;
 }
 
