@@ -1,5 +1,8 @@
+//framework node
 var express = require('express');
+//mapeamentos
 var consign = require('consign');
+//tratativa de formularios
 var bodyParser = require('body-parser');
 
 var app = express();
