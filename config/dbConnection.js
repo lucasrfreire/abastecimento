@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var connMySQL = function(){
     console.log('Conexão com o banco foi estabelecida');
     return connection = mysql.createConnection({
-        host: '10.9.22.25',
+        host: '192.168.0.107',
         user: 'aplicacao',
         password: 'senhabanco',
         database: 'abastecimento'
