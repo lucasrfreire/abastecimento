@@ -15,7 +15,6 @@ module.exports = function (app) {
         var NoticiasDAO = new app.app.models.NoticiasDAO(connection);
 
         NoticiasDAO.getNoticias(function (error, result) {
-            console.log(error);
             res.render("noticias/noticias", {noticias : result});
             });
        

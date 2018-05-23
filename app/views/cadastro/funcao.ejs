@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro de Funções</title>
+    </head>
+    <body>
+        <h1>Cadastro de Funções</h1>
+        <br>
+        <% if(validacao) { %>
+            <ul>
+                <% for(var i = 0; i < validacao.length; i++){%>
+                    <li>
+                        <%= validacao[i].msg %>
+                    </li>
+                <%}%>
+            </ul>
+        <% } %>
+        <label>ID da função</label>
+        <input type="text" name="id_funcao" id="id_funcao" valeu="" placeholder="Automatico" readonly><br>
+        <form action="/cadastro/funcao/salvar" method="POST">
+            <label>Função</label>
+            <input type="text" name="funcao" id="funcao" value="" placeholder="Nome da função"><br>
+            <input type="submit" value="Cadastrar" id="enviar">
+        </form>
+        <hr>
+        <h2>Lista de Funções já cadastradas</h2>
+        <ul>
+            <li></li>
+        </ul>
+    </body>
+</html>
