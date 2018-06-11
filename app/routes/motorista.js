@@ -1,5 +1,5 @@
 module.exports = function(app){
     app.get('/motorista', function(req, res){
-        res.render('cadastro/motorista');
+        app.app.controllers.motoristas.cadastro_motoristas(app, req, res);
     })
 }

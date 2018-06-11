@@ -1,5 +1,5 @@
 module.exports = function(app){
     app.get('/relatorios', function(req, res){
-        res.render("relatorios/emissao");
+        app.app.controllers.relatorios.relatorios(app, req, res);
     });
 }

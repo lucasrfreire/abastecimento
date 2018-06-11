@@ -1,16 +1,9 @@
 module.exports = function(app){
     app.get('/cad_veiculo', function(req, res){
-        res.render("cadastro/veiculo");
+        app.app.controllers.cad_veiculo.cadastro_veiculo(app, req, res);
     });
 
     app.post('/cad_veiculo/salvar', function(req, res){
-        var veiculo = req.body;
-
-        var connection = app.config.dbConnection();
-        var VeiculoDAO = new app.app.models.VeiculoDAO(connection);
-
-        VeiculoDAO.salvarVeiculo(veiculo, function(error, result){
-            res.render('/veiculos');
-        });
+        app.app.controllers.cad_veiculo.cad_veiculo_salvar(app, req, res);
     });
 }
