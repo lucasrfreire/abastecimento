@@ -13,6 +13,7 @@ app.set('views', './app/views');
 
 
 //adicionando como middleware, então já tem que informar como vai tratar os formularios
+app.use(express.static('./app/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
 
