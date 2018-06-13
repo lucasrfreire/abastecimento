@@ -61,10 +61,16 @@
                         <th scope="row"><%=  marca[i].id%></th>
                         <td><%=  marca[i].marca%></td>
                         <td>
-                            <a href="#">Editar</a>
+                            <form action="/cadastro/marca/editar" method="POST">
+                                <input type="hidden" id="id" name="id" value="<%=  marca[i].id%>">
+                                <button type="submit" class="btn btn-link">Editar</button>
+                            </form>
                         </td>
                         <td>
-                            <a href="#">Apagar</a>
+                            <form action="/cadastro/marca/deletar" method="POST">
+                                <input type="hidden" id="id" name="id" value="<%=  marca[i].id%>">
+                                <button type="submit" class="btn btn-danger">Apagar</button>
+                            </form>
                         </td>
                     </tr>
                     <% } %>
