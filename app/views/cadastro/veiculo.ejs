@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head><title>Cadastro de Veiculo</title></head>
-<body>
-<h1>Cadastro de Veiculo</h1>
-<form action="/cad_veiculo/salvar" method="POST">
 
-</form>
+<head>
+    <title>Cadastro de Veiculos</title>
+    <link rel="icon" href="/images/fav.ico">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <%- include ../includes/header %>
+
+    <div class="row">
+        <div class="col-md-4 order-md-1"></div>
+        <div class="col-md-4 order-md-2">
+            <h3 class="mb-3 text-center">Cadastro de veiculos</h3>
+            <hr class="mb-3">
+            <% if(validacao) { %>
+                <ul class="list-group">
+                    <% for(var i = 0; i < validacao.length; i++){%>
+                        <li class="list-group-item list-group-item-danger">
+                            <%= validacao[i].msg %>
+                        </li>
+                    <%}%>
+                </ul>
+            <% } %>
+            <form class="needs-validation" novalidate="" action="/cadastro/veiculo/salvar" method="POST">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label>Nome da marca</label>
+                        <input type="text" class="form-control" id="marca" name="marca" placeholder="" value="" required="">
+                    </div>
+                    <div class="col-md-2 mb-3"></div>
+                    <div class="col-md-8 mb-3">
+                        <button class="btn btn-primary btn-lg btn-block" id="enviar" type="submit">Cadastrar Marca</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <h3 class="text-center">Marcas Cadastradas</h3>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 mb-3">
+
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < marca.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%=  marca[i].id%></th>
+                        <td><%=  marca[i].marca%></td>
+                        <td>
+                            <form action="/cadastro/marca/editar" method="POST">
+                                <input type="hidden" id="id" name="id" value="<%=  marca[i].id%>">
+                                <button type="submit" class="btn btn-link">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/cadastro/marca/deletar" method="POST">
+                                <input type="hidden" id="id" name="id" value="<%=  marca[i].id%>">
+                                <button type="submit" class="btn btn-danger">Apagar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src='/js/jquery-3.3.1.min.js'></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script>
+        $(function () {
+            $('.dropdown-toggle').dropdown();
+        }); 
+    </script>
 </body>
+
 </html>

@@ -1,5 +1,3 @@
-import { funcionario } from "../controllers/funcionario";
-
 function VeiculoDAO(connetion){
     this._connection = connetion;
 }

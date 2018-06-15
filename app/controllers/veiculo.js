@@ -1,5 +1,3 @@
-import { funcionario } from "./funcionario";
-
 module.exports.veiculo = function(app, req, res){
     var connection = app.config.dbConnection();
     var VeiculoDAO = new app.app.models.VeiculoDAO(connection);
