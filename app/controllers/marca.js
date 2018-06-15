@@ -29,14 +29,11 @@ module.exports.salvarMarca = function(app, req, res){
 
 module.exports.deletarMarca = function(app, req, res){
     var marca_id = req.body;
-    console.log(marca_id);
 
     var connection = app.config.dbConnection();
     var MarcaDAO = new app.app.models.MarcaDAO(connection);
 
     MarcaDAO.deletarMarca(marca_id, function(error, result){
-        console.log(error);
-        console.log(result);
         res.redirect('/cadastro/marca');
     });
 }

@@ -2,7 +2,7 @@ module.exports.cadastro_funcao = function(app, req, res){
     var connection = app.config.dbConnection();
         var FuncaoDAO = new app.app.models.FuncaoDAO(connection);
         FuncaoDAO.getFuncoes(function(error, result){
-            res.render('cadastro/funcao', {validacao : {}, funcao : {}, funcoes : result});
+            res.render('cadastro/funcao', {validacao : {}, funcao : result});
         });
 }
 
@@ -12,7 +12,7 @@ module.exports.cadastro_funcao_salvar = function(app, req, res){
         var erros = req.validationErrors();
 
         if(erros){
-            res.render('cadastro/funcao', {validacao : erros, funcao : funcao, funcoes : {}});
+            res.render('cadastro/funcao', {validacao : erros, funcao : {}});
             return;
         }
 
@@ -23,4 +23,14 @@ module.exports.cadastro_funcao_salvar = function(app, req, res){
             console.log(error);
             res.redirect('/cadastro/funcao');
         });
+}
+
+module.exports.deletar_funcao = function(app, req, res){
+    var marca_id = req.body;
+    var connection = app.config.dbConnection();
+    var FuncaoDAO = new app.app.models.FuncaoDAO(connection);
+
+    FuncaoDAO.deletarFuncao(marca_id, function(error, result){
+        res.redirect('/cadastro/funcao');
+    });
 }

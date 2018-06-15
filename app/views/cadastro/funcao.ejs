@@ -1,31 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Cadastro de Funções</title>
-    </head>
-    <body>
-        <h1>Cadastro de Funções</h1>
-        <br>
-        <% if(validacao) { %>
-            <ul>
-                <% for(var i = 0; i < validacao.length; i++){%>
-                    <li>
-                        <%= validacao[i].msg %>
-                    </li>
-                <%}%>
-            </ul>
-        <% } %>
-        <label>ID da função</label>
-        <input type="text" name="id_funcao" id="id_funcao" valeu="" placeholder="Automatico" readonly><br>
-        <form action="/cadastro/funcao/salvar" method="POST">
-            <label>Função</label>
-            <input type="text" name="funcao" id="funcao" value="" placeholder="Nome da função"><br>
-            <input type="submit" value="Cadastrar" id="enviar">
-        </form>
-        <hr>
-        <h2>Lista de Funções já cadastradas</h2>
-        <ul>
-            <li></li>
-        </ul>
-    </body>
+
+<head>
+    <title>Cadastro de Funções</title>
+    <link rel="icon" href="/images/fav.ico">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <%- include ../includes/header %>
+
+    <div class="row">
+        <div class="col-md-4 order-md-1"></div>
+        <div class="col-md-4 order-md-2">
+            <h3 class="mb-3 text-center">Cadastro de Funções</h3>
+            <hr class="mb-3">
+            <% if(validacao) { %>
+                <ul class="list-group">
+                    <% for(var i = 0; i < validacao.length; i++){%>
+                        <li class="list-group-item list-group-item-danger">
+                            <%= validacao[i].msg %>
+                        </li>
+                    <%}%>
+                </ul>
+            <% } %>
+            <form class="needs-validation" novalidate="" action="/cadastro/funcao/salvar" method="POST">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label>Nome da Função</label>
+                        <input type="text" class="form-control" id="funcao" name="funcao" placeholder="" value="" required="">
+                    </div>
+                    <div class="col-md-2 mb-3"></div>
+                    <div class="col-md-8 mb-3">
+                        <button class="btn btn-primary btn-lg btn-block" id="enviar" type="submit">Cadastrar Função</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <h3 class="text-center">Funçoes Cadastradas</h3>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 mb-3">
+
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Função</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < funcao.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%=  funcao[i].id%></th>
+                        <td><%=  funcao[i].funcao%></td>
+                        <td>
+                            <form action="/cadastro/funcao/editar" method="POST">
+                                <input type="hidden" id="id" name="id" value="<%=  funcao[i].id%>">
+                                <button type="submit" class="btn btn-link">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/cadastro/funcao/deletar" method="POST">
+                                <input type="hidden" id="id" name="id" value="<%=  funcao[i].id%>">
+                                <button type="submit" class="btn btn-danger">Apagar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src='/js/jquery-3.3.1.min.js'></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script>
+        $(function () {
+            $('.dropdown-toggle').dropdown();
+        }); 
+    </script>
+</body>
+
 </html>
